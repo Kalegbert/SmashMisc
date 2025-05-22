@@ -1,0 +1,20 @@
+local storage techniques
+
+const [size, setSize] = useState(() => {
+    return Number(localStorage.getItem('ironman-size')) || 3;
+  });
+
+  const [randomImages, setRandomImages] = useState(() => {
+    const saved = localStorage.getItem('ironman-images');
+    return saved ? JSON.parse(saved) : Array(size).fill(null);
+  });
+
+  // Save size whenever it changes
+  useEffect(() => {
+    localStorage.setItem('ironman-size', size);
+  }, [size]);
+
+  // Save images whenever they change
+  useEffect(() => {
+    localStorage.setItem('ironman-images', JSON.stringify(randomImages));
+  }, [randomImages]);

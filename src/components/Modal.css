@@ -1,0 +1,39 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.modal-text {
+  color: rgb(0, 0, 0);
+  font: sans-serif;
+  font-weight: bold;
+  font-size: 50px
+}

@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #0c0a0a;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,14 +25,81 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #47bcdc;
 }
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.my-button {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 0px;
+  border: 2px solid #000000;
+  font-size: 15px;
+  padding: 200px, 200px;
+}
+
+.nice-border {
+  border: 3px solid #ffffff;
+  border-radius: 10px;
+  padding: 0px;
+  box-shadow: 0 0 8px rgba(25, 0, 255, 0.9);
+  transition: transform 0.2s ease;
+}
+
+.nice-border:hover {
+  transform: scale(1.08);
+  /* subtle zoom on hover */
+}
+
+.image-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.seperate {
+  width: 800px;
+}
+
+.input-box {
+  border: 2px solid red;
+  border-radius: 20px;
+}
+
+.footer {
+  text-align: center;
+  width: 300px;
+  padding: 5px;
+  background-color: rgb(0, 0, 0);
+  color: black;
+  border-radius: 20px;
+}
+
+.button-caption {
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
+  font-size: 18px;
+  color: rgb(255, 255, 255);;
+
+}
+
+.link-box-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 }
