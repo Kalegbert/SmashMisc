@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import shuffleAnimation from './components/shuffleAnimation';
 
-
-const users = [
-  { username: "admin", password: "1234", role: "admin" },
-  { username: "guest", password: "abcd", role: "user" }
-];
 
 const images = importAll(require.context('./assets/color_images', false, /\.(png)$/));
 
@@ -15,66 +11,6 @@ function importAll(r) {
 
 
 
-
-const user = {
-  name: 'Kyle Egbert',
-  // imageUrl: 'https://static.wikia.nocookie.net/ssb/images/a/a9/Chrom_-_Super_Smash_Bros._Ultimate.png',
-  imageSize: 90,
-};
-
-
-
-function MyButton() {
-
-  const [currentImage, setCurrentImage] = useState(images[0]);
-
-  async function handleClick(setterFunction) {
-    let x = 80
-    for (let i = 0; i < 13; i++) {
-      const randomIndex = Math.floor(Math.random() * images.length);
-      setterFunction(images[randomIndex]);
-      if (i > 5) {
-        x += 20
-      }
-      await sleep(x);
-    }
-  }
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <button onClick={() => handleClick(setCurrentImage)} className="image-button">
-        <img
-          src={currentImage}
-          alt="Random character"
-          style={{ width: '100px', height: '100px', objectFit: 'cover', marginTop: '10px' }}
-          className="nice-border"
-        />
-      </button>
-    </div>
-  );
-}
-
-async function shuffleAnimation(setImageAtIndex, finalImage) {
-
-
-  function getRandomInt(min, max) {
-    min = Math.ceil(min); // Rounds up to the nearest integer
-    max = Math.floor(max); // Rounds down to the nearest integer
-    return Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive
-  }
-
-  let delay = getRandomInt(70, 80);
-  for (let i = 0; i < getRandomInt(11, 15); i++) {
-    const randomIndex = Math.floor(Math.random() * images.length);
-    setImageAtIndex(images[randomIndex]);
-    if (i > 5) {
-      delay += 20;
-    }
-    await sleep(delay);
-  }
-  // Set the final selected image
-  setImageAtIndex(finalImage);
-}
 
 function IronMan() {
 
@@ -87,7 +23,6 @@ function IronMan() {
     return saved ? JSON.parse(saved) : Array(size).fill(null);
   });
 
-
   // Save size whenever it changes
   useEffect(() => {
     localStorage.setItem('ironman-size', size);
@@ -97,6 +32,8 @@ function IronMan() {
   useEffect(() => {
     localStorage.setItem('ironman-images', JSON.stringify(randomImages));
   }, [randomImages]);
+
+
 
   
   // getRandomImages clearly had a pattern so chatGPT gave me this idk how it works tho
@@ -113,6 +50,8 @@ function IronMan() {
     const shuffled = fisherYatesShuffle(images);
     return shuffled.slice(0, x);
   }
+
+
 
   async function handleClick() {
     const selectedImages = getRandomImages(size);
@@ -174,34 +113,6 @@ function IronMan() {
   );
 }
 
-
-function Testing() {
-
-  const [text, setText] = useState(() => {
-    return String(localStorage.getItem('testing-var')) || "Swag";
-  });
-
-  // Save size whenever it changes
-  useEffect(() => {
-    localStorage.setItem('testing-var', text);
-  }, [text]);
-
-
-  return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      {/* <h1>{text}</h1> */}
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Type something"
-        style={{ fontSize: '16px', padding: '8px' }}
-        className="input-box"
-      />
-    </div>
-  );
-
-}
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
