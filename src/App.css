@@ -58,12 +58,15 @@
   padding: 0px;
   box-shadow: 0 0 8px rgba(25, 0, 255, 0.9);
   transition: transform 0.2s ease;
+  
 }
 
 .nice-border:hover {
-  transform: scale(1.08);
+  transform: scale(1.00);
   /* subtle zoom on hover */
 }
+
+
 
 .image-button {
   background: none;
@@ -129,4 +132,33 @@
   padding-left: 10px;
   padding-right: 10px;
 
+}
+
+.vr {
+  width: 2px;
+  height: 100%;
+  background-color: #ccc;
+  margin: 0 20px;
+  align-self: stretch;
+}
+
+.hover {
+  transform: scale(1.08);
+  /* subtle zoom on hover */
+}
+
+
+.image-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+
+  /* Apply zoom on hover to whole container (image + overlay) */
+  transition: transform 0.2s ease;
+}
+
+
+.image-wrapper:hover {
+  transform: scale(1.1);
 }
