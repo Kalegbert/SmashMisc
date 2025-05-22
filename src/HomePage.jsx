@@ -10,27 +10,14 @@ function HomePage() {
         <div style={{ display: "flex", gap: "20px", padding: "100px" }}>
           <IronMan />
         </div>
-        <footer className="footer">
-          <a
-            className="App-link"
-            href="https://github.com/Kalegbert"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            My Github
-          </a>
-          <div style={{ marginTop: "1rem" }}>
-            <button onClick={() => navigate("/about")} className="my-button">
-              Go to About Page
-            </button>
-            <button onClick={() => navigate("/login")} className="my-button">
-              Login
-            </button>
-            <button onClick={() => navigate("/dashboard")} className="my-button">
-              Dashboard
-            </button>
-          </div>
-        </footer>
+        <div className="top-right">
+          <button onClick={() => navigate("/login")} className="my-button">
+            Login
+          </button>
+          <button onClick={() => navigate("/dashboard")} className="my-button">
+            Dashboard
+          </button>
+        </div>
       </header>
     </div>
   );

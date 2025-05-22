@@ -87,6 +87,7 @@ function IronMan() {
     return saved ? JSON.parse(saved) : Array(size).fill(null);
   });
 
+
   // Save size whenever it changes
   useEffect(() => {
     localStorage.setItem('ironman-size', size);
@@ -97,8 +98,19 @@ function IronMan() {
     localStorage.setItem('ironman-images', JSON.stringify(randomImages));
   }, [randomImages]);
 
+  
+  // getRandomImages clearly had a pattern so chatGPT gave me this idk how it works tho
+  function fisherYatesShuffle(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
   function getRandomImages(x) {
-    const shuffled = [...images].sort(() => 0.5 - Math.random());
+    const shuffled = fisherYatesShuffle(images);
     return shuffled.slice(0, x);
   }
 
@@ -132,7 +144,7 @@ function IronMan() {
   return (
     <div>
       <div style={{ marginBottom: '10px' }}>
-        <label htmlFor="ironSize">Choose Number of Images: </label>
+        <label htmlFor="ironSize">Number of Characters: </label>
         <input
           id="ironSize"
           type="number"
@@ -143,8 +155,8 @@ function IronMan() {
         />
       </div>
 
-      <button onClick={handleClick}>
-        Shuffle Characters
+      <button onClick={handleClick} className="shuffle-button">
+        Shuffle
       </button>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
