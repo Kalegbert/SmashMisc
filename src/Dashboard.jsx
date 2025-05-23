@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import aboutMeImage from './components/images/aboutMe.jpg';
+import luigiGamble from './components/images/luigiGamble.jpg';
 import ironManImage from './components/images/qblock.jpg';
 import LinkBox from './components/LinkBox';
 import Modal from './components/Modal';
@@ -26,6 +27,11 @@ export default function Dashboard({ user }) {
                         words="About Me"
                         imgPath={aboutMeImage}
                         onClick={() => setShowAboutModal(true)}
+                    />
+                    <LinkBox
+                        words="Gambling"
+                        imgPath={luigiGamble}
+                        nav="/about"
                     />
                 </div>
 

@@ -8,7 +8,11 @@ function AboutPage() {
     <div className="App">
       <header className="App-header">
         <div style={{ display: 'flex', gap: '20px' }}>
-      <button onClick={() => navigate('/')} className="my-button">Go Back Home</button>
+          <a>
+            Nothing yet
+          </a>
+          <div></div>
+      <button onClick={() => navigate('/dashboard')} className="my-button">Back to dashboard</button>
       </div>
       </header>
     </div>
