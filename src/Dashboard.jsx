@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import aboutMeImage from './components/images/aboutMe.jpg';
 import luigiGamble from './components/images/luigiGamble.jpg';
@@ -8,11 +8,23 @@ import Modal from './components/Modal';
 import './components/Modal.css';
 
 export default function Dashboard({ user }) {
+    const [username, setUser] = useState(null);
+
+    useEffect(() => {
+        const savedUser = localStorage.getItem('user');
+        if (savedUser && !user) {
+            setUser(JSON.parse(savedUser));
+        }
+    }, [user]);
+
+
     const navigate = useNavigate();
     const [showAboutModal, setShowAboutModal] = useState(false);
 
     return (
         <div className="App">
+
+
 
             <header className="App-header">
                 <h2>Welcome, {user.username}!</h2>
@@ -52,7 +64,26 @@ export default function Dashboard({ user }) {
                         </p>
                     </Modal>
                 )}
+
             </header>
+
+            <div className="top-right">
+                <button onClick={() => navigate("/login")} className="my-button">
+                    Login
+                </button>
+                <button onClick={() => {
+                    localStorage.removeItem('user');
+                    setUser(null);
+                    navigate('/login');
+                }}
+                    className="my-button">
+                    Logout
+                </button>
+                <button onClick={() => navigate("/dashboard")} className="my-button">
+                    Dashboard
+                </button>
+
+            </div>
 
             {user.role === 'admin' && (
                 <button onClick={() => navigate('/admin')}>Go to Admin Page</button>

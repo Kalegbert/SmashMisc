@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import IronMan from "./IronMan";
 
+
 function HomePage() {
   const navigate = useNavigate();
 
@@ -16,10 +17,22 @@ function HomePage() {
     localStorage.setItem("ironman-size", iSize);
   }, [iSize]);
 
-  function handleInputChange(e) {
-    const val = Math.max(1, Number(e.target.value));
-    setISize(val);
-  }
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+
+    // Allow empty string (user is deleting)
+    if (value === '') {
+      setISize('');
+      return;
+    }
+
+    // Parse number and restrict to 1–86
+    const number = parseInt(value, 10);
+    if (number >= 1 && number <= 86) {
+      setISize(number);
+    }
+  };
+
 
   return (
     <div className="App">
@@ -28,22 +41,22 @@ function HomePage() {
           type="number"
           value={iSize}
           min={1}
+          max={86}
           onChange={handleInputChange}
         />
+        <div className="button-caption">Number of characters</div>
         <div style={{ display: "flex", gap: "20px", padding: "100px" }}>
           <IronMan size={iSize} storageKey="player1" />
 
-          <div className="vr"/>
+          <div className="vr" />
 
           <IronMan size={iSize} storageKey="player2" />
         </div>
         <div className="top-right">
-          <button onClick={() => navigate("/login")} className="my-button">
-            Login
-          </button>
           <button onClick={() => navigate("/dashboard")} className="my-button">
             Dashboard
           </button>
+
         </div>
       </header>
     </div>

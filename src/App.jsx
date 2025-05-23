@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from 'react-router-dom';
 import AboutPage from './About';
 import AdminPage from "./AdminPage";
@@ -8,10 +8,16 @@ import HomePage from './HomePage';
 import LoginPage from "./LoginPage";
 
 
-
-
 function App() {
-  const [user, setUser] = useState(null); // Tracks the logged-in user
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem('user');
+    if (savedUser && !user) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, [user]);
+
 
   return (
     <Routes>
