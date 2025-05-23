@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import './App.css';
+import Leaderboard from './components/leaderboard';
 
 function AboutPage() {
   const navigate = useNavigate();
@@ -8,12 +9,15 @@ function AboutPage() {
     <div className="App">
       <header className="App-header">
         <div style={{ display: 'flex', gap: '20px' }}>
-          <a>
-            Nothing yet
-          </a>
+          <Leaderboard />
           <div></div>
-      <button onClick={() => navigate('/dashboard')} className="my-button">Back to dashboard</button>
-      </div>
+          <div className="top-right">
+            <button onClick={() => navigate("/dashboard")} className="my-button">
+              Dashboard
+            </button>
+
+          </div>
+        </div>
       </header>
     </div>
   );

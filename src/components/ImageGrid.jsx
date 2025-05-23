@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import '../App.css'; // Assuming your CSS classes are defined here
 
 function ImageGrid({ images }) {
   const [overlayToggles, setOverlayToggles] = useState(Array(images.length).fill(false));
-  const imagesPerRow = 5;
+  const imagesPerRow = 5; // This will now act as a maximum for desktop, will wrap on mobile
 
   const toggleOverlay = (index) => {
     setOverlayToggles((prev) => {
@@ -12,7 +13,7 @@ function ImageGrid({ images }) {
     });
   };
 
-  // Break images into rows
+  // Break images into rows (still useful for initial grouping, but flex-wrap handles actual layout)
   const rows = [];
   for (let i = 0; i < images.length; i += imagesPerRow) {
     rows.push(images.slice(i, i + imagesPerRow));
@@ -28,7 +29,7 @@ function ImageGrid({ images }) {
             justifyContent: 'center',
             gap: '10px',
             marginBottom: '10px',
-            flexWrap: 'nowrap',
+            flexWrap: 'wrap', // IMPORTANT: Allows items to wrap to the next line on smaller screens
           }}
         >
           {row.map((img, index) => {
@@ -36,22 +37,22 @@ function ImageGrid({ images }) {
             return (
               <div
                 key={absoluteIndex}
-                style={{ position: 'relative', width: '100px', height: '100px', cursor: 'pointer' }}
+                // Removed inline width/height here; .image-wrapper CSS handles it
                 onClick={() => toggleOverlay(absoluteIndex)}
-                className="image-wrapper"
+                className="image-wrapper" // This class now holds the responsive sizing
               >
                 <img
                   src={img}
                   alt={`Random ${absoluteIndex + 1}`}
-                  style={{ width: '100px', height: '100px', objectFit: 'cover' }}
+                  // Removed inline width/height; .image-wrapper img CSS handles it
                   className="nice-border"
                 />
                 {overlayToggles[absoluteIndex] && (
                   <div
                     style={{
                       position: 'absolute',
-                      top: 3,
-                      left: 3,
+                      top: 0, // Position correctly relative to the wrapper
+                      left: 0, // Position correctly relative to the wrapper
                       width: '100%',
                       height: '100%',
                       display: 'flex',
@@ -59,7 +60,7 @@ function ImageGrid({ images }) {
                       justifyContent: 'center',
                       pointerEvents: 'none',
                       backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                      borderRadius: '7px',
+                      borderRadius: '7px', // This should match border-radius of the image/wrapper roughly
                     }}
                   >
                     <img
