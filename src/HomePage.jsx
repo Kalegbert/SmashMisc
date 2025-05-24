@@ -45,19 +45,20 @@ function HomePage() {
           onChange={handleInputChange}
         />
         <div className="button-caption">Number of characters</div>
-        <div style={{ display: "flex", gap: "20px", padding: "100px" }}>
+        <div style={{ display: "flex", gap: "20px" }}>
           <IronMan size={iSize} storageKey="player1" />
 
           <div className="vr" />
 
           <IronMan size={iSize} storageKey="player2" />
-        </div>
-        <div className="top-right">
-          <button onClick={() => navigate("/dashboard")} className="my-button">
-            Dashboard
-          </button>
+          <div className="top-right">
+            <button onClick={() => navigate("/dashboard")} className="my-button">
+              Dashboard
+            </button>
 
+          </div>
         </div>
+
       </header>
     </div>
   );

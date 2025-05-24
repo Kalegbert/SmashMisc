@@ -29,7 +29,7 @@ function ImageGrid({ images }) {
             justifyContent: 'center',
             gap: '10px',
             marginBottom: '10px',
-            flexWrap: 'wrap', // IMPORTANT: Allows items to wrap to the next line on smaller screens
+            flexWrap: 'wrap', 
           }}
         >
           {row.map((img, index) => {
@@ -37,9 +37,9 @@ function ImageGrid({ images }) {
             return (
               <div
                 key={absoluteIndex}
-                // Removed inline width/height here; .image-wrapper CSS handles it
+
                 onClick={() => toggleOverlay(absoluteIndex)}
-                className="image-wrapper" // This class now holds the responsive sizing
+                className="image-wrapper"
               >
                 <img
                   src={img}
@@ -51,10 +51,10 @@ function ImageGrid({ images }) {
                   <div
                     style={{
                       position: 'absolute',
-                      top: 0, // Position correctly relative to the wrapper
-                      left: 0, // Position correctly relative to the wrapper
-                      width: '100%',
-                      height: '100%',
+                      top: 2, // Position correctly relative to the wrapper
+                      left: 2, // Position correctly relative to the wrapper
+                      width: '102%',
+                      height: '102%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -67,8 +67,8 @@ function ImageGrid({ images }) {
                       src={require('./images/x-out.png')}
                       alt="Overlay"
                       style={{
-                        width: '87%',
-                        height: '87%',
+                        width: '100%',
+                        height: '100%',
                         objectFit: 'contain',
                         pointerEvents: 'none',
                       }}
