@@ -38,6 +38,7 @@ function HomePage() {
     <div className="App">
       <header className="App-header">
         <input
+          style={{ fontSize: '20px' }}
           type="number"
           value={iSize}
           min={1}
