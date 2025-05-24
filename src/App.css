@@ -140,7 +140,7 @@
 }
 
 .hover {
-  transform: scale(1.08); /* subtle zoom on hover */
+  transform: scale(1.03); /* subtle zoom on hover */
 }
 
 /* Updated .image-wrapper for responsiveness */
@@ -188,7 +188,7 @@
 }
 
 .image-wrapper:hover {
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 
 /* Media query for larger screens (tablets and desktop) */

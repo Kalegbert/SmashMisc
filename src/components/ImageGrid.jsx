@@ -52,13 +52,13 @@ function ImageGrid({ images }) {
                     style={{
                       position: 'absolute',
                       top: 2, // Position correctly relative to the wrapper
-                      left: 2, // Position correctly relative to the wrapper
-                      width: '102%',
-                      height: '102%',
+                      left: 3, // Position correctly relative to the wrapper
+                      width: '100%',
+                      height: '100%',
                       display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      pointerEvents: 'none',
+                      // alignItems: 'center',
+                      // justifyContent: 'center',
+                      // pointerEvents: 'none',
                       backgroundColor: 'rgba(0, 0, 0, 0.5)',
                       borderRadius: '7px', // This should match border-radius of the image/wrapper roughly
                     }}
